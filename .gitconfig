@@ -1,0 +1,7 @@
+[user]
+	email = r.bilych@gmail.com
+	name = Ruslan Bilych
+[push]
+	default = matching
+[alias]
+	co = checkout

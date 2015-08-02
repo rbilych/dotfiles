@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+path=`pwd`
+ 
+echo "Create symlink for:"
+
+for i in `find . -path '*/\.*' -name '*'`
+do
+  filename=`basename $i`
+  ln -s $path/$filename ~/$filename
+  echo $filename
+done
+
+echo "Done!"
