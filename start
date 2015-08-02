@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 path=`pwd`
- 
+
 echo "Create symlink for:"
 
 for i in `find . -path '*/\.*' -name '*'`
