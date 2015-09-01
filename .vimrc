@@ -23,6 +23,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'godlygeek/tabular'
 Plugin 'Yggdroot/indentLine'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Development
 Plugin 'tpope/vim-endwise'
@@ -61,6 +62,7 @@ set history=1000 " store lots of history entries
 set backspace=indent,eol,start " backspacing settings
 set nobackup " don't create backups
 set noswapfile " don't create swap files
+autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
 "set scrolloff=6
 "Color theme
   set t_Co=256
