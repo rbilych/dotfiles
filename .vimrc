@@ -10,35 +10,33 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 
-" Interface
+" MY BUNDLE
+"""""""""""""""""""""""""""""""""""""""""
 " For terminal colors use
 " https://github.com/Anthony25/gnome-terminal-colors-solarized
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tpope/vim-repeat'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-endwise'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'godlygeek/tabular'
-Plugin 'Yggdroot/indentLine'
-Plugin 'christoomey/vim-tmux-navigator'
-
-" Development
-Plugin 'tpope/vim-endwise'
-Plugin 'sheerun/vim-polyglot'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"   Interface
+"   Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set colorcolumn=80 " show 80 column
 set number " show numbers
-set rnu " show relative numbers
+set relativenumber " show relative numbers
 syntax on " syntax highlight
 set showmode " always show currently mode
 set encoding=utf-8 " default encoding
@@ -63,21 +61,19 @@ set backspace=indent,eol,start " backspacing settings
 set nobackup " don't create backups
 set noswapfile " don't create swap files
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
-"set scrolloff=6
 "Color theme
-  set t_Co=256
-  colorscheme solarized
-  set background=light
-"Ignore following files when completing file/directory names
-  set wildignore+=.hg,.git,.svn
-  set wildignore+=*.pyc
-  set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set t_Co=256
+colorscheme solarized
+set background=light
 "Search
-  set incsearch
-  set hlsearch
-  set ignorecase
-  set smartcase
-  set gdefault
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set gdefault
+" Ignore stuff that can't be opened
+set wildignore+=tmp/**
+set wildignore+=.git
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,47 +83,59 @@ let mapleader = ","
 
 " Clear the search highlight
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
-
 "Disable <Arrow keys>
-  inoremap <Up> <NOP>
-  inoremap <Down> <NOP>
-  inoremap <Left> <NOP>
-  inoremap <Right> <NOP>
-  noremap <Up> <NOP>
-  noremap <Down> <NOP>
-  noremap <Left> <NOP>
-  noremap <Right> <NOP>
-
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 "Navigate with <Ctrl>-hjkl in Insert mode
-  imap <C-h> <C-o>h
-  imap <C-j> <C-o>j
-  imap <C-k> <C-o>k
-  imap <C-l> <C-o>l
-
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
 "Switch splits
-  nmap <C-h> <C-W>h
-  nmap <C-j> <C-W>j
-  nmap <C-k> <C-W>k
-  nmap <C-l> <C-W>l
-
-"Navigate through wrapped lines
-  "noremap j gj
-  "noremap k gk
-
-"Show buffers
-  nmap <Leader>bl :ls<cr>:b
-"Split buffer
-  nmap <Leader>bs :ls<cr>:vert sb
-"Go to prev buffer
-  nmap <Leader>bp :bp<cr>
-"Go to next buffer
-  nmap <Leader>bn :bn<cr>
-
-"Auto change directory to match current file ,cd
-  nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
-
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+"Ctrl-t to new tab
+map <C-t> <esc>:tabnew<CR>
 "Toggle background
-  map <F2> :let &background = ( &background == "dark"? "light" : "dark" ) <CR>
+map <F2> :let &background = ( &background == "dark"? "light" : "dark" ) <CR>
+"Navigate through wrapped lines
+noremap j gj
+noremap k gk
+"Buffers
+nmap <Leader>bl :ls<cr>:b
+nmap <Leader>bs :ls<cr>:vert sb
+nmap <Leader>bp :bp<cr>
+nmap <Leader>bn :bn<cr>
+nmap <Leader>bd :bd<cr>
+"Save file
+map <Leader>s :w<CR>
+"Indent all file
+map <Leader>i mmgg=G`m
+"Paste from clipbord; Need vim-gtk installed
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+" :Q = :q ...
+command! Q q
+command! E e
+
+"Rename current file
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <Leader>n :call RenameFile()<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,27 +145,8 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'
 
-"NERDTree
-  nmap <Bs> :NERDTreeToggle<CR>
-  let NERDTreeShowBookmarks=1
-  let NERDTreeChDirMode=2
-  let NERDTreeQuitOnOpen=1
-  "let NERDTreeShowHidden=1
-  let NERDTreeKeepTreeInNewTab=0
-  "Disable display of the 'Bookmarks' label and 'Press ? for help' text
-  let NERDTreeMinimalUI=1
-  "Use arrows instead of + ~ chars when displaying directories
-  let NERDTreeDirArrows=1
-  let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
-
 "Tabular
   nmap <Leader>a= :Tabularize /=<CR>
   vmap <Leader>a= :Tabularize /=<CR>
   nmap <Leader>a: :Tabularize /:\zs<CR>
   vmap <Leader>a: :Tabularize /:\zs<CR>
-
-"IndentLine
-  "let g:indentLine_color_term = 192
-  let g:indentLine_char = '│'
-  let g:indentLine_enabled = 0
-  map <F3> :IndentLinesToggle <CR>
