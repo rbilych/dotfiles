@@ -5,3 +5,4 @@
 	default = matching
 [alias]
 	co = checkout
+  ci = commit
