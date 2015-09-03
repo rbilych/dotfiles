@@ -9,6 +9,7 @@ alias v='vim'
 alias vi='vim'
 alias ln='ln -s'
 alias server='python -m SimpleHTTPServer'
+alias c='clear'
 
 # Shortcats
 alias shortcuts='vim ~/.oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh'
@@ -21,7 +22,8 @@ alias tm='tmux'
 alias tmuxrc='vim ~/.tmux.conf'
 
 # Plugins
-plugins=(git common-aliases rails)
+#zsh-syntax-highlighting - https://github.com/zsh-users/zsh-syntax-highlighting
+plugins=(git common-aliases rails zsh-syntax-highlighting)
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
