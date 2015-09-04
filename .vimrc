@@ -19,6 +19,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-repeat'
+Plugin 'qpkorr/vim-bufkill'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-endwise'
@@ -114,7 +115,7 @@ nmap <Leader>bl :ls<cr>:b
 nmap <Leader>bs :ls<cr>:vert sb
 nmap <Leader>bp :bp<cr>
 nmap <Leader>bn :bn<cr>
-nmap <Leader>bd :bd<cr>
+nmap <Leader>bd :BD<cr>
 "Save file
 map <Leader>s :w<CR>
 "Indent all file
