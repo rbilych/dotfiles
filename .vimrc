@@ -65,7 +65,7 @@ autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
 "Color theme
 set t_Co=256
 colorscheme solarized
-set background=light
+set background=dark
 "Search
 set incsearch
 set hlsearch
