@@ -6,3 +6,4 @@
 [alias]
 	co = checkout
   ci = commit
+  s  = status
