@@ -22,11 +22,14 @@ Plugin 'tpope/vim-repeat'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-endwise'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
+
+"Ruby/Rails
+Plugin 'tpope/vim-endwise'
+Plugin 'vim-ruby/vim-ruby'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
