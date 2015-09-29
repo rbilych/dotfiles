@@ -30,6 +30,7 @@ Plugin 'godlygeek/tabular'
 "Ruby/Rails
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
