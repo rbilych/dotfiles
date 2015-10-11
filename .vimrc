@@ -31,6 +31,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
+Plugin 'ngmy/vim-rubocop'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -155,3 +156,7 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+
+"Rubocop
+let g:vimrubocop_keymap = 0
+nmap <Leader>r :RuboCop<CR>
