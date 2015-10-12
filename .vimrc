@@ -26,6 +26,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
+Plugin 'duggiefresh/vim-easydir'
 
 "Ruby/Rails
 Plugin 'tpope/vim-endwise'
