@@ -24,15 +24,23 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'duggiefresh/vim-easydir'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 "Ruby/Rails
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'ngmy/vim-rubocop'
+
+"Wordpress
+"Plugin 'mattn/emmet-vim'
+"Plugin 'Townk/vim-autoclose'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -41,7 +49,19 @@ filetype plugin indent on     " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set colorcolumn=80 " show 80 column
+" Tabulation For Ruby - 2 spaces no tab
+set shiftwidth=2 " number of spaces to use for each step of (auto)indent
+set expandtab " use spaces instead of tab
+set tabstop=2 " number of spaces that a tab counts for
+set softtabstop=2 " number of spaces that a tab counts
+
+" Tabulation For PHP - tab = 4 no spaces
+"set tabstop=4
+"set softtabstop=0
+"set noexpandtab
+"set shiftwidth=4
+
+"set colorcolumn=80 " show 80 column
 set number " show numbers
 set relativenumber " show relative numbers
 syntax on " syntax highlight
@@ -54,10 +74,6 @@ set wrap " wrap long lines
 set linebreak " don't break words when wrapping
 set autoindent " copy indent from current line
 set smartindent " smart indenting when starting a new line
-set shiftwidth=2 " number of spaces to use for each step of (auto)indent
-set expandtab " use spaces instead of tab
-set tabstop=2 " number of spaces that a tab counts for
-set softtabstop=2 " number of spaces that a tab counts
 set splitbelow " splitting a window will put the new window below :sp
 set splitright " splitting a window will put the new window right :vsp
 set shortmess+=I " don't show the intro message starting Vim
@@ -82,10 +98,28 @@ set gdefault
 set wildignore+=tmp/**
 set wildignore+=.git
 
+if has("gui_running")
+  set gfn=Monospace\ 12
+
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
+
+  set background=dark
+  colors solarized
+
+  autocmd GUIEnter * set vb t_vb= " No beeping and flashing
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" jj to ESC
+imap jj <Esc>
+
+" Leader
 let mapleader = ","
 
 " Clear the search highlight
@@ -149,15 +183,42 @@ map <Leader>n :call RenameFile()<cr>
 "   Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+  let g:ctrlp_map = '<c-p>'
+  let g:ctrlp_cmd = 'CtrlP'
 
 "Tabular
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "Rubocop
-let g:vimrubocop_keymap = 0
-nmap <Leader>r :RuboCop<CR>
+  let g:vimrubocop_keymap = 0
+  nmap <Leader>r :RuboCop<CR>
+
+"NERDTree
+  nmap <Bs> :NERDTreeToggle<CR>
+  let NERDTreeShowBookmarks=1
+  let NERDTreeChDirMode=2
+  let NERDTreeQuitOnOpen=1
+  "let NERDTreeShowHidden=1
+  let NERDTreeKeepTreeInNewTab=0
+  "Disable display of the 'Bookmarks' label and 'Press ? for help' text
+  let NERDTreeMinimalUI=1
+  "Use arrows instead of + ~ chars when displaying directories
+  let NERDTreeDirArrows=1
+  let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
+
+" Emmet
+  let g:user_emmet_install_global = 0
+  autocmd FileType html,css,scss,php EmmetInstall
+  "Redefine trigger key
+  imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" Easymotion
+	map <Leader>l <Plug>(easymotion-lineforward)
+	map <Leader>j <Plug>(easymotion-j)
+	map <Leader>k <Plug>(easymotion-k)
+	map <Leader>h <Plug>(easymotion-linebackward)
+
+	let g:EasyMotion_startofline = 0

@@ -33,6 +33,3 @@ source $ZSH/oh-my-zsh.sh
 
 # terminal support 256 color schemes
 export TERM="xterm-256color"
-
-# RVM
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
