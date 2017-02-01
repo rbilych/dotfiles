@@ -13,8 +13,8 @@ Plugin 'gmarik/vundle'
 " MY BUNDLE
 """""""""""""""""""""""""""""""""""""""""
 " For terminal colors use
-" https://github.com/Anthony25/gnome-terminal-colors-solarized
-Plugin 'altercation/vim-colors-solarized'
+" https://github.com/chriskempson/base16-shell
+Plugin 'chriskempson/base16-vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -38,9 +38,9 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'ngmy/vim-rubocop'
 
-"Wordpress
-"Plugin 'mattn/emmet-vim'
-"Plugin 'Townk/vim-autoclose'
+"Other
+Plugin 'mattn/emmet-vim'
+Plugin 'Townk/vim-autoclose'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -84,10 +84,16 @@ set backspace=indent,eol,start " backspacing settings
 set nobackup " don't create backups
 set noswapfile " don't create swap files
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
+
 "Color theme
 set t_Co=256
-colorscheme solarized
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
+colorscheme base16-default-dark
 set background=dark
+
 "Search
 set incsearch
 set hlsearch
@@ -97,20 +103,6 @@ set gdefault
 " Ignore stuff that can't be opened
 set wildignore+=tmp/**
 set wildignore+=.git
-
-if has("gui_running")
-  set gfn=Monospace\ 12
-
-  set guioptions-=m  "remove menu bar
-  set guioptions-=T  "remove toolbar
-  set guioptions-=r  "remove right-hand scroll bar
-  set guioptions-=L  "remove left-hand scroll bar
-
-  set background=dark
-  colors solarized
-
-  autocmd GUIEnter * set vb t_vb= " No beeping and flashing
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -146,7 +138,7 @@ nmap <C-l> <C-W>l
 "Ctrl-t to new tab
 map <C-t> <esc>:tabnew<CR>
 "Toggle background
-map <F2> :let &background = ( &background == "dark"? "light" : "dark" ) <CR>
+"map <F2> :let &background = ( &background == "dark"? "light" : "dark" ) <CR>
 "Navigate through wrapped lines
 noremap j gj
 noremap k gk
@@ -220,5 +212,5 @@ map <Leader>n :call RenameFile()<cr>
 	map <Leader>j <Plug>(easymotion-j)
 	map <Leader>k <Plug>(easymotion-k)
 	map <Leader>h <Plug>(easymotion-linebackward)
-
 	let g:EasyMotion_startofline = 0
+
