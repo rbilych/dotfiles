@@ -23,7 +23,7 @@ alias tmuxrc='vim ~/.tmux.conf'
 
 # Plugins
 #zsh-syntax-highlighting - https://github.com/zsh-users/zsh-syntax-highlighting
-plugins=(git common-aliases rails zsh-syntax-highlighting)
+plugins=(git common-aliases rails extract colored-man-pages zsh-syntax-highlighting)
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
