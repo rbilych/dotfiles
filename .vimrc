@@ -34,13 +34,13 @@ Plugin 'garbas/vim-snipmate'
 
 "Ruby/Rails
 Plugin 'tpope/vim-endwise'
+Plugin 'Townk/vim-autoclose'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'ngmy/vim-rubocop'
 
 "Other
 Plugin 'mattn/emmet-vim'
-Plugin 'Townk/vim-autoclose'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
