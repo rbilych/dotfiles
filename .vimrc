@@ -55,12 +55,6 @@ set expandtab " use spaces instead of tab
 set tabstop=2 " number of spaces that a tab counts for
 set softtabstop=2 " number of spaces that a tab counts
 
-" Tabulation For PHP - tab = 4 no spaces
-"set tabstop=4
-"set softtabstop=0
-"set noexpandtab
-"set shiftwidth=4
-
 "set colorcolumn=80 " show 80 column
 set number " show numbers
 set relativenumber " show relative numbers
@@ -88,8 +82,8 @@ autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
 "Color theme
 set t_Co=256
 if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
 colorscheme base16-default-dark
 set background=dark
@@ -106,6 +100,15 @@ set wildignore+=.git
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   Auto comands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto source config files
+augroup autosourcing
+  autocmd!
+  autocmd BufWritePost .vimrc source %
+augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " jj to ESC
@@ -116,6 +119,7 @@ let mapleader = ","
 
 " Clear the search highlight
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent> <Leader><space> :nohlsearch<CR><Esc>
 "Disable <Arrow keys>
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
@@ -137,8 +141,6 @@ nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
 "Ctrl-t to new tab
 map <C-t> <esc>:tabnew<CR>
-"Toggle background
-"map <F2> :let &background = ( &background == "dark"? "light" : "dark" ) <CR>
 "Navigate through wrapped lines
 noremap j gj
 noremap k gk
@@ -175,42 +177,42 @@ map <Leader>n :call RenameFile()<cr>
 "   Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "CtrlP
-  let g:ctrlp_map = '<c-p>'
-  let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 "Tabular
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "Rubocop
-  let g:vimrubocop_keymap = 0
-  nmap <Leader>r :RuboCop<CR>
+let g:vimrubocop_keymap = 0
+nmap <Leader>r :RuboCop<CR>
 
 "NERDTree
-  nmap <Bs> :NERDTreeToggle<CR>
-  let NERDTreeShowBookmarks=1
-  let NERDTreeChDirMode=2
-  let NERDTreeQuitOnOpen=1
-  "let NERDTreeShowHidden=1
-  let NERDTreeKeepTreeInNewTab=0
-  "Disable display of the 'Bookmarks' label and 'Press ? for help' text
-  let NERDTreeMinimalUI=1
-  "Use arrows instead of + ~ chars when displaying directories
-  let NERDTreeDirArrows=1
-  let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
+nmap <Bs> :NERDTreeToggle<CR>
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2
+let NERDTreeQuitOnOpen=1
+"let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=0
+"Disable display of the 'Bookmarks' label and 'Press ? for help' text
+let NERDTreeMinimalUI=1
+"Use arrows instead of + ~ chars when displaying directories
+let NERDTreeDirArrows=1
+let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
 
 " Emmet
-  let g:user_emmet_install_global = 0
-  autocmd FileType html,css,scss,php EmmetInstall
-  "Redefine trigger key
-  imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,scss,php EmmetInstall
+"Redefine trigger key
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Easymotion
-	map <Leader>l <Plug>(easymotion-lineforward)
-	map <Leader>j <Plug>(easymotion-j)
-	map <Leader>k <Plug>(easymotion-k)
-	map <Leader>h <Plug>(easymotion-linebackward)
-	let g:EasyMotion_startofline = 0
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_startofline = 0
 
