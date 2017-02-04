@@ -15,13 +15,15 @@ Plugin 'gmarik/vundle'
 " For terminal colors use
 " https://github.com/chriskempson/base16-shell
 Plugin 'chriskempson/base16-vim'
+" Need fonts: https://github.com/ryanoasis/nerd-fonts
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-repeat'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
