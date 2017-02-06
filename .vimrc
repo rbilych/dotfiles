@@ -15,8 +15,6 @@ Plugin 'gmarik/vundle'
 " For terminal colors use
 " https://github.com/chriskempson/base16-shell
 Plugin 'chriskempson/base16-vim'
-" Need fonts: https://github.com/ryanoasis/nerd-fonts
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -33,6 +31,8 @@ Plugin 'duggiefresh/vim-easydir'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+" Need fonts: https://github.com/ryanoasis/nerd-fonts
+Plugin 'ryanoasis/vim-devicons'
 
 "Ruby/Rails
 Plugin 'tpope/vim-endwise'
