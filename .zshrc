@@ -14,7 +14,7 @@ alias c='clear'
 # Shortcats
 alias shortcuts='vim ~/.oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh'
 alias gitshortcuts='vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
-alias railsshortcuts='vim ~/.oh-my-zsh/plugins/rails/rails.plugin.zsh'
+#alias railsshortcuts='vim ~/.oh-my-zsh/plugins/rails/rails.plugin.zsh'
 
 # Tmux
 alias tmux='tmux -2'
@@ -23,7 +23,7 @@ alias tmuxrc='vim ~/.tmux.conf'
 
 # Plugins
 #zsh-syntax-highlighting - https://github.com/zsh-users/zsh-syntax-highlighting
-plugins=(git common-aliases rails extract colored-man-pages zsh-syntax-highlighting)
+plugins=(git common-aliases extract colored-man-pages zsh-syntax-highlighting)
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 export TERM="xterm-256color"
 
 # RVM
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # BASE16 https://github.com/chriskempson/base16-shell
 BASE16_SHELL=$HOME/.config/base16-shell/

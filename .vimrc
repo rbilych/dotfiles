@@ -31,18 +31,17 @@ Plugin 'duggiefresh/vim-easydir'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'mattn/emmet-vim'
+Plugin 'Townk/vim-autoclose'
 " Need fonts: https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons'
 
 "Ruby/Rails
-Plugin 'tpope/vim-endwise'
-Plugin 'Townk/vim-autoclose'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'ngmy/vim-rubocop'
+"Plugin 'tpope/vim-endwise'
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'tpope/vim-rails'
+"Plugin 'ngmy/vim-rubocop'
 
-"Other
-Plugin 'mattn/emmet-vim'
 """"""""""""""""""""""""""""""""""""""""
 call vundle#end()             " required
 filetype plugin indent on     " required
@@ -189,8 +188,8 @@ nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "Rubocop
-let g:vimrubocop_keymap = 0
-nmap <Leader>r :RuboCop<CR>
+"let g:vimrubocop_keymap = 0
+"nmap <Leader>r :RuboCop<CR>
 
 "NERDTree
 nmap <Bs> :NERDTreeToggle<CR>
