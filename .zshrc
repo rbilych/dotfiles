@@ -17,8 +17,7 @@ alias gitshortcuts='vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
 #alias railsshortcuts='vim ~/.oh-my-zsh/plugins/rails/rails.plugin.zsh'
 
 # Tmux
-alias tmux='tmux -2'
-alias tm='tmux -2'
+alias tm='tmux'
 alias tmuxrc='vim ~/.tmux.conf'
 
 # Plugins
