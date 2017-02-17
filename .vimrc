@@ -155,8 +155,6 @@ nmap <Leader>bd :BD<cr>
 map <Leader>s :w<CR>
 "Indent all file
 map <Leader>i mmgg=G`m
-"Paste from clipbord; Need vim-gtk installed
-map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 " :Q = :q ...
 command! Q q
 command! E e
