@@ -33,8 +33,10 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'mattn/emmet-vim'
 Plugin 'Townk/vim-autoclose'
-" Need fonts: https://github.com/ryanoasis/nerd-fonts
-Plugin 'ryanoasis/vim-devicons'
+Plugin 'rking/ag.vim' "Need silversearcher-ag install
+Plugin 'skwp/greplace.vim'
+Plugin 'ryanoasis/vim-devicons' "Fonts: https://github.com/ryanoasis/nerd-fonts
+
 
 "Ruby/Rails
 "Plugin 'tpope/vim-endwise'
@@ -179,22 +181,22 @@ map <Leader>n :call RenameFile()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"CtrlP
+" CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = 'node_modules\|git'
 
-"Tabular
+" Tabular
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
-"Rubocop
+" Rubocop
 "let g:vimrubocop_keymap = 0
 "nmap <Leader>r :RuboCop<CR>
 
-"NERDTree
+" NERDTree
 nmap <Bs> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
@@ -220,3 +222,10 @@ map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_startofline = 0
 
+" Ag.vim
+nmap <Leader>ff :Ag<space>
+
+" Greplace.vim
+set grepprg=ag  "use ag.vim for search
+let g:grep_cmd_opts = '--line-numbers --noheading'
+nmap <Leader>fr :Gsearch<CR>
