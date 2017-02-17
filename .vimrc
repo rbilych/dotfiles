@@ -50,11 +50,11 @@ filetype plugin indent on     " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tabulation For Ruby - 2 spaces no tab
-set shiftwidth=2 " number of spaces to use for each step of (auto)indent
+" Tabulation - 4 spaces no tab
+set shiftwidth=4 " number of spaces to use for each step of (auto)indent
 set expandtab " use spaces instead of tab
-set tabstop=2 " number of spaces that a tab counts for
-set softtabstop=2 " number of spaces that a tab counts
+set tabstop=4 " number of spaces that a tab counts for
+set softtabstop=4 " number of spaces that a tab counts
 
 "set colorcolumn=80 " show 80 column
 set number " show numbers
