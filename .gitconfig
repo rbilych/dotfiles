@@ -1,9 +1,11 @@
 [user]
-	email = r.bilych@gmail.com
-	name = Ruslan Bilych
+    email = r.bilych@gmail.com
+    name = Ruslan Bilych
 [push]
-	default = matching
+    default = matching
 [alias]
-	co = checkout
-  ci = commit
-  s  = status
+    co = checkout
+    cob = checkout -b
+    ci = commit
+    p = push
+    s = status -sb
