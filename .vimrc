@@ -158,6 +158,10 @@ map <Leader>i mmgg=G`m
 " :Q = :q ...
 command! Q q
 command! E e
+"search with ctags
+nmap <Leader>t :tag<space>
+"run ctags
+nmap <Leader>r :!ctags -R<CR>
 
 "Rename current file
 function! RenameFile()
