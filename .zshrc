@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/ruslan/.oh-my-zsh
 export EDITOR='vim'
-ZSH_THEME="bira"
+ZSH_THEME="avit"
 
 # Aliases
 alias vimrc='vi ~/.vimrc'
