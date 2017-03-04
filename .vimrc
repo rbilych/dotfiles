@@ -33,7 +33,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'mattn/emmet-vim'
 Plugin 'Townk/vim-autoclose'
-Plugin 'rking/ag.vim' "Need silversearcher-ag install
+Plugin 'rking/ag.vim' "Need silversearcher-ag install and exuberant-ctags
 Plugin 'skwp/greplace.vim'
 Plugin 'ryanoasis/vim-devicons' "Fonts: https://github.com/ryanoasis/nerd-fonts
 
@@ -163,7 +163,7 @@ command! E e
 "search with ctags
 nmap <Leader>t :tag<space>
 "run ctags
-nmap <Leader>r :!ctags -R<CR>
+nmap <Leader>r :!ctags -R --exclude=node_modules<CR>
 
 "Rename current file
 function! RenameFile()
