@@ -10,6 +10,7 @@ alias vi='vim'
 alias ln='ln -s'
 alias server='python -m SimpleHTTPServer'
 alias c='clear'
+alias py='python3.6'
 
 # Shortcats
 alias shortcuts='vim ~/.oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh'
@@ -40,6 +41,9 @@ function homestead() {
 
 # RVM
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# Anaconda
+export PATH="$PATH:$HOME/Anaconda/bin"
 
 # BASE16 https://github.com/chriskempson/base16-shell
 BASE16_SHELL=$HOME/.config/base16-shell/
