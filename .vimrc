@@ -35,6 +35,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Townk/vim-autoclose'
 Plugin 'rking/ag.vim' "Need silversearcher-ag install and exuberant-ctags
 Plugin 'skwp/greplace.vim'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ryanoasis/vim-devicons' "Fonts: https://github.com/ryanoasis/nerd-fonts
 
 
@@ -85,8 +87,8 @@ autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
 "Color theme
 set t_Co=256
 if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+    let base16colorspace=256
+    source ~/.vimrc_background
 endif
 colorscheme base16-default-dark
 set background=dark
@@ -107,8 +109,8 @@ set wildignore+=.git
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto source config files
 augroup autosourcing
-  autocmd!
-  autocmd BufWritePost .vimrc source %
+    autocmd!
+    autocmd BufWritePost .vimrc source %
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,20 +162,23 @@ map <Leader>i mmgg=G`m
 " :Q = :q ...
 command! Q q
 command! E e
-"search with ctags
+"Search with ctags
 nmap <Leader>t :tag<space>
-"run ctags
-nmap <Leader>r :!ctags -R --exclude=node_modules<CR>
+"Run ctags
+nmap <Leader>r :!ctags -R --exclude=node_modules --exclude=vendor --exclude=.git<CR>
+"Sort PHP use statements
+vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-"}'<CR>
+
 
 "Rename current file
 function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'), 'file')
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
 endfunction
 map <Leader>n :call RenameFile()<cr>
 
@@ -229,3 +234,11 @@ nmap <Leader>ff :Ag<space>
 set grepprg=ag  "use ag.vim for search
 let g:grep_cmd_opts = '--line-numbers --noheading'
 nmap <Leader>fr :Gsearch<CR>
+
+" Vim-php-namespace
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
