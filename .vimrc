@@ -213,7 +213,7 @@ let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,scss,php EmmetInstall
 "Redefine trigger key
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+imap <expr> <Leader>e emmet#expandAbbrIntelligent("\<tab>")
 
 " Easymotion
 map <Leader>l <Plug>(easymotion-lineforward)
