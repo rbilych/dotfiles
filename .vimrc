@@ -33,7 +33,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'mattn/emmet-vim'
 Plugin 'Townk/vim-autoclose'
-Plugin 'rking/ag.vim' "Need silversearcher-ag install and exuberant-ctags
+Plugin 'rking/ag.vim' "Need install silversearcher-ag exuberant-ctags
 Plugin 'skwp/greplace.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'arnaud-lb/vim-php-namespace'

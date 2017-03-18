@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/ruslan/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 export EDITOR='vim'
 ZSH_THEME="avit"
 
@@ -26,7 +26,7 @@ alias tmuxrc='vim ~/.tmux.conf'
 plugins=(git common-aliases extract colored-man-pages zsh-syntax-highlighting)
 
 # User configuration
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ruslan/.config/composer/vendor/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/.config/composer/vendor/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
