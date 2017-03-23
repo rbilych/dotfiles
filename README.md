@@ -9,13 +9,17 @@ Install ruby on rails
 Install neovim zsh tmux pip3
 
 `sudo add-apt-repository ppa:neovim-ppa/unstable`
+
 `sudo apt update && sudo apt install neovim zsh tmux python3-pip`
+
 `pip3 install --upgrade neovim`
+
 `rvm @global do gem install neovim rubocop`
 
 Install oh my zhs
 
 `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+
 `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
 
