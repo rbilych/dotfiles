@@ -2,11 +2,13 @@
 
 path=`pwd`
 
-#ln -s $path/.gemrc ~/.gemrc
+mkdir ~/.config/nvim
+ln -s $path/.gemrc ~/.gemrc
 ln -s $path/.gitconfig ~/.gitconfig
-#ln -s $path/.irbrc ~/.irbrc
+ln -s $path/.irbrc ~/.irbrc
 ln -s $path/.tmux.conf ~/.tmux.conf
-ln -s $path/.vimrc ~/.vimrc
 ln -s $path/.zshrc ~/.zshrc
+ln -s $path/init.vim ~/.config/nvim/
+#ln -s $path/.vimrc ~/.vimrc
 
 echo "Done!"
