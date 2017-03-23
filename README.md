@@ -2,7 +2,7 @@
 
 ## Installation
 
-###Install ruby on rails
+### Install ruby on rails
 
 [https://gorails.com/setup/](https://gorails.com/setup/)
 
