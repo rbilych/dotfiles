@@ -7,5 +7,6 @@ ln -s $path/.gitconfig ~/.gitconfig
 ln -s $path/.tmux.conf ~/.tmux.conf
 ln -s $path/.zshrc ~/.zshrc
 ln -s $path/init.vim ~/.config/nvim/init.vim
+ln -s $path/redshift.conf ~/.config/redshift.conf
 
 echo "Done!"
