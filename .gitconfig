@@ -1,11 +1,7 @@
 [user]
     email = r.bilych@gmail.com
     name = Ruslan Bilych
-[push]
-    default = matching
-[alias]
-    co = checkout
-    cob = checkout -b
-    ci = commit
-    p = push
-    s = status -sb
+[color]
+	ui = true
+[credential]
+	helper = cache --timeout=86400

@@ -9,12 +9,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-endwise'
-
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Utils
 Plug 'scrooloose/nerdtree'
@@ -24,19 +18,16 @@ Plug 'tomtom/tcomment_vim'
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-repeat'
 Plug 'qpkorr/vim-bufkill'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'duggiefresh/vim-easydir'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'ryanoasis/vim-devicons' "Fonts: https://github.com/ryanoasis/nerd-fonts
+Plug 'ryanoasis/vim-devicons'
 
 " Snippets
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -44,12 +35,12 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tabulation - 2 spaces no tab
-set shiftwidth=2 " number of spaces to use for each step of (auto)indent
+" Tabulation - 4 spaces no tab
+set shiftwidth=4 " number of spaces to use for each step of (auto)indent
+set tabstop=4 " number of spaces that a tab counts for
+set softtabstop=4 " number of spaces that a tab counts
 set expandtab " use spaces instead of tab
-set tabstop=2 " number of spaces that a tab counts for
-set softtabstop=2 " number of spaces that a tab counts
-
+set smartindent
 set colorcolumn=80 " show 80 column
 set number " show numbers
 set relativenumber " show relative numbers
@@ -61,14 +52,19 @@ set linebreak " don't break words when wrapping
 set splitbelow " splitting a window will put the new window below :sp
 set splitright " splitting a window will put the new window right :vsp
 set hidden " edit several files in the same time
+set scrolloff=8
+set signcolumn=yes
+set noswapfile
+set nohlsearch
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
+let g:python3_host_prog = '/usr/bin/python3' " python3 path
 
 "Color theme
 syntax enable
 set t_Co=256
 if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+    let base16colorspace=256
+    source ~/.vimrc_background
 endif
 set background=dark
 
@@ -87,20 +83,6 @@ map <Leader>s :w<CR>
 
 "Indent all file
 map <Leader>i mmgg=G`m
-
-" Clear the search highlight
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
-nnoremap <silent> <Leader><space> :nohlsearch<CR><Esc>
-
-"Disable <Arrow keys>
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 
 "Navigate with <Ctrl>-hjkl in Insert mode
 imap <C-h> <C-o>h
@@ -121,13 +103,13 @@ nmap <Leader>bd :BD<cr>
 
 "Rename current file
 function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'), 'file')
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
 endfunction
 map <Leader>n :call RenameFile()<cr>
 
@@ -148,9 +130,6 @@ let NERDTreeDirArrows=1
 let g:airline_theme='base16'
 let g:airline_powerline_fonts = 1
 
-" Vim-fugitive
-nmap <Leader>g :Gblame<CR>
-
 " TComment
 nmap <Leader>c :TComment<CR>
 vmap <Leader>c :TComment<CR>
@@ -166,29 +145,18 @@ let g:deoplete#enable_at_startup = 1
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = 'node_modules\|git\|log\|tmp'
-
-" Rubocop
-let g:vimrubocop_keymap = 0
-nmap <Leader>r :RuboCop<CR>
+let g:ctrlp_custom_ignore = 'node_modules\|git\|tmp'
 
 " Easymotion
 map <Leader>; <Plug>(easymotion-overwin-f)
 let g:EasyMotion_startofline = 0
 
-" Multiple cursors
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-b>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 " NeoSnippet
 let g:neosnippet#enable_snipmate_compatibility = 1
-" let g:neosnippet#snippets_directory='~/.snippets'
+"let g:neosnippet#snippets_directory='~/.config/snippets'
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: "\<TAB>"

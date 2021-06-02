@@ -8,29 +8,34 @@ alias vimrc='nvim ~/.config/nvim/init.vim'
 alias v='nvim'
 alias vi='nvim'
 alias ln='ln -s'
-alias server='python -m SimpleHTTPServer'
-alias c='clear'
-alias py='python3.6'
+alias c=' clear'
 alias tm='tmux'
 alias tmuxrc='nvim ~/.tmux.conf'
+alias :q=' exit'
+alias vact='source .venv/bin/activate'
 
 # Shortcats
 alias shortcuts='nvim ~/.oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh'
 alias gitshortcuts='nvim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
-alias railsshortcuts='nvim ~/.oh-my-zsh/plugins/rails/rails.plugin.zsh'
 
 # Plugins
 #zsh-syntax-highlighting - https://github.com/zsh-users/zsh-syntax-highlighting
-plugins=(git rails common-aliases extract colored-man-pages zsh-syntax-highlighting)
+plugins=(git common-aliases extract colored-man-pages zsh-syntax-highlighting)
 
 # User configuration
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/.config/composer/vendor/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
-# RVM
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+if [ -n "$VIRTUAL_ENV" ]; then
+    . "$VIRTUAL_ENV/bin/activate"
+fi
 
 # terminal support 256 color schemes
 export TERM="xterm-256color"
