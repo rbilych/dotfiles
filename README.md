@@ -1,45 +1,33 @@
 # My Dotfiles
 
-## Installation
+## Install packages
+`sudo apt install git zsh tmux neovim`
 
-### Install ruby on rails
+## Install oh my zhs
+`sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
-[https://gorails.com/setup/](https://gorails.com/setup/)
+`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
 
-### Install neovim zsh tmux pip3
-
-`sudo add-apt-repository ppa:neovim-ppa/unstable`
-
-`sudo apt update && sudo apt install neovim zsh tmux python3-pip`
-
-`pip3 install --upgrade neovim`
-
-`rvm @global do gem install neovim rubocop`
-
-### Install oh my zhs
-
-`sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
-
-`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-    ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
-
-### Install base16 theme for terminal
-
+## Install base16 theme for terminal
 `git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell`
 
-### Install vim-plug
-
-`curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-
-### Clone dotfiles
-
-`mv ~/.zshrc ~/.zshrc.old && git clone git@github.com:rbilych/dotfiles.git && cd dotfiles && ./start`
-
 ### Activate base16 theme
-
 `base16_tomorrow-night`
 
-### On nvim run
+## Install vim-plug
+`sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
 
+### On nvim run
 `:PlugInstall`
+
+## Clone dotfiles
+`mv ~/.zshrc ~/.zshrc.old && git clone git@github.com:rbilych/dotfiles.git && cd dotfiles && ./start`
+
+## Install pyenv
+`sudo apt install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev`
+
+`curl https://pyenv.run | bash`
+
+`pyenv install --list` find proper version
+`pyenv intall [version]`
+`pyenv global system`
