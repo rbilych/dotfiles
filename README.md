@@ -1,7 +1,7 @@
 # My Dotfiles
 
 ## Install packages
-`sudo apt install git zsh tmux neovim`
+`sudo apt install git zsh tmux neovim kitty`
 
 ## Install oh my zhs
 `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
@@ -21,7 +21,7 @@
 `:PlugInstall`
 
 ## Clone dotfiles
-`mv ~/.zshrc ~/.zshrc.old && git clone git@github.com:rbilych/dotfiles.git && cd dotfiles && ./start`
+`mv ~/.zshrc ~/.zshrc.old && git clone https://github.com/rbilych/dotfiles.git Dotfiles && cd Dotfiles && ./start`
 
 ## Install pyenv
 `sudo apt install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev`
@@ -29,5 +29,7 @@
 `curl https://pyenv.run | bash`
 
 `pyenv install --list` find proper version
+
 `pyenv intall [version]`
+
 `pyenv global system`
